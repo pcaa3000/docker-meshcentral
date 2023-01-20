@@ -1,0 +1,23 @@
+{
+  "settings": {
+    "mongoDb": "mongodb://meshcentral-db:27017",
+    "mongoDbName": "meshcentral",
+    "dbEncryptKey": "mysecretpassword",
+    "agentPort": 8800,
+    "cert": "remoteit.local"
+  },
+  "domains": {
+    "": {
+      "_titlehtml": "<div style=\"height:66px;background-color:white;color:#00b2a9;padding-left:14px;padding-top:8px;font-size:46px;font-family:Arial,Helvetica,sans-serif;font-weight:bold\"></div>",
+      "_TitlePicture": "Logo-Cia-Mesh.png",
+      "_loginPicture": "login-Cia.png", 
+      "certUrl": "https://remoteit.local",
+      "userSessionIdleTimeout": 30, 
+      "SessionRecording": {
+        "filepath": "meshcentral-files/recordings",
+        "maxRecordingDays": 7, 
+        "protocols": [ 1, 2, 100, 101 ]
+      }
+    }
+  } 
+}

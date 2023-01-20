@@ -1,0 +1,10 @@
+{
+    "smtp": {
+        "host": "smtp.gmail.com",
+        "port": 465,
+        "from": "emailmesh@mycompany.com",
+        "user": "emailmesh@mycompany.com",
+        "pass": "password",
+        "tls": true
+    }
+}

@@ -1,0 +1,16 @@
+{
+  "settings": {
+    "mongoDb": "mongodb://meshcentral-db:27017",
+    "mongoDbName": "meshcentral",
+    "dbEncryptKey": "mysecretpassword",
+    "agentPort": 8800,
+    "cert": "remoteit.local"
+  },
+  "domains": {
+    "": {
+      "NewAccounts": true, 
+      "userNameIsEmail": true,
+      "certUrl": "https://remoteit.local"
+    }
+  }
+}

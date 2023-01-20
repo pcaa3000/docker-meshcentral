@@ -1,0 +1,47 @@
+version: '3'
+# This is example 3 from the documentation
+services:
+  meshcentral:
+    container_name: meshcentral
+    image: meshcentral-docker:latest
+    build: .
+    depends_on:
+      - meshcentral-db 
+    restart: "always"
+    volumes:
+      - ./container-data/meshcentral-data:/meshcentral/meshcentral-data
+      - ./container-data/meshcentral-files:/meshcentral/meshcentral-files
+      - ./container-data/meshcentral-backup:/meshcentral/meshcentral-backup
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - MONGODB_URL=mongodb://meshcentral-db:27017
+      - MONGODB_NAME=meshcentral
+      - DB_ENCRYPT_KEY=${DB_ENCRYPT_KEY}
+      - AGENT_PORT=8800
+      - HOSTNAME=remoteit.local
+    ports:
+      - 8800:8800
+      - 8081:80
+      - 8443:443
+    networks:
+      - meshcentral-nw
+#      - soporte_reverseproxy-nw
+    
+  meshcentral-db:
+    container_name: meshcentral-db
+    image: mongo:latest
+    restart: "always"
+    volumes:
+      # - ./container-data/db:/data/db
+      - mesh-data:/data/db
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - meshcentral-nw
+
+volumes:
+  mesh-data:
+
+networks:
+  meshcentral-nw:
+#  soporte_reverseproxy-nw:
+#    external: true
