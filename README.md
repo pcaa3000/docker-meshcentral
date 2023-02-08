@@ -28,8 +28,11 @@ Edit variale in _docker-compose.yaml_
 ```sh
     ...
     environment:
-      - MONGODB_URL=mongodb://meshcentral-db:27017
-      - MONGODB_NAME=meshcentral
+      - MARIADB_HOST=meshcentral-db
+      - MARIADB_PORT=3306
+      - MARIADB_DATABASE=meshcentral
+      - MARIADB_USER=${DBMESH_USER}
+      - MARIADB_PASS=${DBMESH_PASS}
       - DB_ENCRYPT_KEY=${DB_ENCRYPT_KEY}
       - AGENT_PORT=8800
       - HOSTNAME=remoteit.local

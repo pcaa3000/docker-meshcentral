@@ -3,8 +3,11 @@ FROM node:alpine
 # ARG MESHCENTRAL2_VERSION="0.6.43"
 
 # Environment Variables
-ENV MONGODB_URL=
-ENV MONGODB_NAME=
+ENV MARIADB_HOST=
+ENV MARIADB_PORT=
+ENV MARIADB_DATABASE=
+ENV MARIADB_USER=
+ENV MARIADB_PASS=
 ENV DB_ENCRYPT_KEY=
 ENV AGENT_PORT=
 ENV HOSTNAME=
@@ -21,17 +24,17 @@ RUN apk update
 RUN apk add --no-cache sudo libcap
 
 # pre-requisites for meshcentral
-# mongodb-tools    used if a mongodb installation is used
+# mariadb-common mariadb-client   used if a mongodb installation is used
 # jo               used to craft the initial settings.json file
 # jq               json parser, can be used to filter json files
-RUN apk add --no-cache mongodb-tools jo jq
+RUN apk add --no-cache jo jq
 
 # Add the ability to set file permissions to the non-privileged user
 RUN echo "ALL ALL=NOPASSWD: /bin/chown -R 1000\:1000 /meshcentral" >> /etc/sudoers
 
 
 # RUN npm install meshcentral@${MESHCENTRAL2_VERSION}
-RUN npm install meshcentral
+RUN npm install mariadb meshcentral
 RUN npm install --no-optional --save archiver otplib image-size node-rdpjs-2 archiver-zip-encrypted
 
 # set the meshcentral directory permissions to the node user

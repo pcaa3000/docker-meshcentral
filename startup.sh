@@ -34,7 +34,8 @@ then
     echo "---- No config.json file detected. Creating based on Environment Variables ---"
     # /bin/sh generate-config.sh
     # generate the config.json
-    settings=$(jo mongoDb=$MONGODB_URL mongoDbName=$MONGODB_NAME dbEncryptKey=$DB_ENCRYPT_KEY agentPort=$AGENT_PORT cert=$HOSTNAME)
+    mariadb=$(jo host=$MARIADB_HOST user=$MARIADB_USER port=$MARIADB_PORT password=$MARIADB_PASS database=$MARIADB_DATABASE)
+    settings=$(jo mariaDB=$mariadb dbEncryptKey=$DB_ENCRYPT_KEY agentPort=$AGENT_PORT cert=$HOSTNAME)
     domain=$(jo certUrl=https://$HOSTNAME) 
     domains=$(jo ''=$domain)
     config=$(jo settings=$settings domains=$domains)

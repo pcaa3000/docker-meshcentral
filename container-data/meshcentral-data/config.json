@@ -1,7 +1,12 @@
 {
   "settings": {
-    "mongoDb": "mongodb://meshcentral-db:27017",
-    "mongoDbName": "meshcentral",
+    "mariaDB": {
+      "host":"meshcentral-db",
+      "user": "meshcentral",
+      "port": "3306",
+      "password": "MeshP@$$w0rd",
+      "database": "meshcentral"
+    },
     "dbEncryptKey": "mysecretpassword",
     "agentPort": 8800,
     "cert": "remoteit.local"

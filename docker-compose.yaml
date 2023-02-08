@@ -14,8 +14,11 @@ services:
       - ./container-data/meshcentral-backup:/meshcentral/meshcentral-backup
       - /etc/localtime:/etc/localtime:ro
     environment:
-      - MONGODB_URL=mongodb://meshcentral-db:27017
-      - MONGODB_NAME=meshcentral
+      - MARIADB_HOST=meshcentral-db
+      - MARIADB_PORT=3306
+      - MARIADB_DATABASE=meshcentral
+      - MARIADB_USER=${DBMESH_USER}
+      - MARIADB_PASS=${DBMESH_PASS}
       - DB_ENCRYPT_KEY=${DB_ENCRYPT_KEY}
       - AGENT_PORT=8800
       - HOSTNAME=remoteit.local
@@ -29,12 +32,18 @@ services:
     
   meshcentral-db:
     container_name: meshcentral-db
-    image: mongo:latest
+    image: mariadb:10.7 #latest
     restart: "always"
     volumes:
       # - ./container-data/db:/data/db
-      - mesh-data:/data/db
+      - mesh-data:/var/lib/mysql
       - /etc/localtime:/etc/localtime:ro
+    environment:
+      - MYSQL_DATABASE=meshcentral
+      - MYSQL_USER=${DBMESH_USER}
+      - MYSQL_PASSWORD=${DBMESH_PASS}
+      - MYSQL_ROOT_PASSWORD=${DBMESH_ROOT_PASS}
+      - TZ=America/Lima 
     networks:
       - meshcentral-nw
 
