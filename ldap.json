@@ -1,0 +1,20 @@
+{
+  "domains": {
+    "": {
+      "auth": "ldap",
+      "ldapUserName": "displayName",
+      "ldapUserBinaryKey": "objectSid",
+      "ldapOptions": {
+        "url": "ldap://127.16.0.1:389",
+        "bindDN": "CN=svc_meshcentral,CN=Users,DC=meshcentral,DC=local",
+        "bindCredentials": "Password.1",
+        "searchBase": "DC=meshcentral,DC=local",
+        "searchFilter": "(sAMAccountName={{username}})",
+        "reconnect": true
+      },
+      "ldapUserRequiredGroupMembership": [ "CN=Domain Admins,CN=Users,DC=meshcentral,DC=local" ],
+      "ldapSyncWithUserGroups": true,
+      "ldapSiteAdminGroups": [ "CN=Domain Admins,CN=Users,DC=meshcentral,DC=local" ]
+    }
+  }
+}
