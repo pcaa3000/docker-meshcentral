@@ -1,0 +1,27 @@
+{
+  "domains": {
+    "": {
+      "PasswordRequirements": {
+        "_min": 8,
+        "max": 64,
+        "_upper": 1,
+        "_lower": 1,
+        "_numeric": 1,
+        "_nonalpha": 1,
+        "_reset": 10,
+        "_hint": true,
+        "force2factor": true,
+        "_email2factor": true,
+        "_sms2factor": true,
+        "_push2factor": false,
+        "_otp2factor": false,
+        "_oldPasswordBan": 5,
+        "_banCommonPasswords": true,
+        "_skip2factor": "127.0.0.1,192.168.2.0/24",
+        "_loginTokens": true,
+        "_twoFactorTimeout": 2,
+        "_autofido2fa": false
+      }
+    }
+  }
+}
